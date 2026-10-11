@@ -4,12 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>DS</title>
-<meta name="theme-color" content="#ecf4f8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a141b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="DS">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -19,28 +18,19 @@
 <style>
 :root{
   color-scheme:light;
-  --bg:#ecf4f8; --surface:#ffffff; --ink:#0e2230; --muted:#546b7a; --line:#cfe0ea;
-  --accent:#8bd0f2; --accent-ink:#06293b; --accent-soft:#dff1fb; --accent-text:#0a6a99;
+  --bg:#ffffff; --bg-top:#e4f3fc; --surface:#ffffff; --ink:#0e2230; --muted:#546b7a; --line:#d3e6f2;
+  --accent:#8bd0f2; --accent-ink:#06293b; --accent-soft:#e8f5fc; --accent-text:#0a6a99;
   --logo-a:#2a8dbf; --logo-b:#5cb4e0;
   --ok:#1f7a4d; --ok-ink:#ffffff; --danger:#b3261e;
   --p25:#c8281f; --p20:#1c4fc4; --p15:#d9a900; --p10:#1f8a4c; --p5:#8a9690;
   --f-display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;
   --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    color-scheme:dark;
-    --bg:#0a141b; --surface:#101e28; --ink:#e6f2f8; --muted:#8fa7b6; --line:#1d3140;
-    --accent:#8bd0f2; --accent-ink:#06293b; --accent-soft:#12303f; --accent-text:#8bd0f2;
-    --logo-a:#8bd0f2; --logo-b:#3a8fb7;
-    --ok:#5fd493; --ok-ink:#06180e; --danger:#ff8f86;
-    --p25:#e5524a; --p20:#5b86ee; --p15:#e8bd1c; --p10:#3fb872; --p5:#9aa6a0;
-  }
-}
 *{box-sizing:border-box}
 html{background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--f-body);-webkit-text-size-adjust:100%;min-height:100vh;touch-action:manipulation}
-.wrap{max-width:720px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));padding-block:calc(12px + env(safe-area-inset-top)) calc(56px + env(safe-area-inset-bottom))}
+body{margin:0;background:linear-gradient(180deg,var(--bg-top) 0,var(--bg) 300px) no-repeat var(--bg);color:var(--ink);font:400 16px/1.45 var(--f-body);-webkit-text-size-adjust:100%;min-height:100vh;touch-action:manipulation}
+.snow{position:fixed;right:-70px;top:-50px;width:320px;height:320px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 50L94.0 50.0M74.0 50.0L79.8 43.1M74.0 50.0L79.8 56.9M84.0 50.0L89.8 43.1M84.0 50.0L89.8 56.9M50 50L72.0 88.1M62.0 70.8L70.9 72.3M62.0 70.8L58.9 79.2M67.0 79.4L75.9 81.0M67.0 79.4L63.9 87.9M50 50L28.0 88.1M38.0 70.8L41.1 79.2M38.0 70.8L29.1 72.3M33.0 79.4L36.1 87.9M33.0 79.4L24.1 81.0M50 50L6.0 50.0M26.0 50.0L20.2 56.9M26.0 50.0L20.2 43.1M16.0 50.0L10.2 56.9M16.0 50.0L10.2 43.1M50 50L28.0 11.9M38.0 29.2L29.1 27.7M38.0 29.2L41.1 20.8M33.0 20.6L24.1 19.0M33.0 20.6L36.1 12.1M50 50L72.0 11.9M62.0 29.2L58.9 20.8M62.0 29.2L70.9 27.7M67.0 20.6L63.9 12.1M67.0 20.6L75.9 19.0' fill='none' stroke='%230a6a99' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;opacity:.07;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));padding-block:calc(12px + env(safe-area-inset-top)) calc(56px + env(safe-area-inset-bottom))}
 .narrow{max-width:420px}
 h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance;line-height:1.05}
 h1{font-size:36px;text-transform:uppercase;letter-spacing:.01em}
@@ -133,6 +123,7 @@ pre.cfg{background:var(--surface);border:1px solid var(--line);border-radius:8px
 </head>
 <body>
 <datalist id="exlist"></datalist>
+<div class="snow" aria-hidden="true"></div>
 <div id="app"></div>
 <div id="toast" role="status" hidden></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
