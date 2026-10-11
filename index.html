@@ -39,7 +39,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--f-body);-webkit-text-size-adjust:100%;min-height:100vh}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--f-body);-webkit-text-size-adjust:100%;min-height:100vh;touch-action:manipulation}
 .wrap{max-width:720px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));padding-block:calc(12px + env(safe-area-inset-top)) calc(56px + env(safe-area-inset-bottom))}
 .narrow{max-width:420px}
 h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance;line-height:1.05}
@@ -70,10 +70,10 @@ button:disabled{opacity:.4;cursor:default}
 .btn.sm{min-height:36px;padding:0 12px;font-size:14px}
 .btn.link{border:0;background:none;color:var(--accent-text);padding:0 6px;min-height:36px}
 :focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
-input,textarea,select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;min-height:44px;padding:0 12px;width:100%;min-width:0}
+input,textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;min-height:44px;padding:0 12px;width:100%;min-width:0}
 textarea{padding:10px 12px;min-height:76px;resize:vertical;display:block}
 label.f{display:flex;flex-direction:column;gap:4px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;min-width:0}
-label.f input{text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink)}
+label.f input,label.f textarea,label.f select{font-size:16px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink)}
 .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
 .seg button{border:0;background:none;min-height:40px;border-radius:7px;font-weight:600;color:var(--muted)}
 .seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
