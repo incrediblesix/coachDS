@@ -372,6 +372,7 @@ function render() {
   else if (S.mode === 'claim') h = claimView();
   else h = authView();
   app.innerHTML = h;
+  document.body.classList.toggle('cr-on', S.phase === 'ready' && (S.mode === 'client' || S.mode === 'preview') && S.view === 'oggi');
   updateDatalist();
   window.scrollTo(0, y);
 }

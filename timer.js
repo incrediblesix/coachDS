@@ -3,8 +3,8 @@
   var acc = 0, t0 = 0, run = false, raf = 0, lock = null;
   var css = document.createElement('style');
   css.textContent =
-    'body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}' +
-    '#cr{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(10,106,153,.12);padding:8px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));display:flex;align-items:center;gap:8px;justify-content:center}' +
+    'body.cr-on{padding-bottom:calc(76px + env(safe-area-inset-bottom))}#cr{display:none}body.cr-on #cr{display:flex}' +
+    '#cr{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(10,106,153,.12);padding:8px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));align-items:center;gap:8px;justify-content:center}' +
     '#cr .dg{font:700 34px/1 var(--f-display);letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--ink);min-width:98px;text-align:center}' +
     '#cr.on .dg{color:var(--accent-text)}' +
     '#cr button{min-height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 14px system-ui,sans-serif;letter-spacing:.04em}' +
