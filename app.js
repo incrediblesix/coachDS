@@ -55,14 +55,20 @@ async function afterLogin(user) {
 }
 function authErr(e) {
   var m = errText(e);
-  if (/Invalid login credentials/i.test(m)) return 'Email o password non corrette.';
-  if (/already registered/i.test(m)) return 'Esiste già un account con questa email. Usa "Accedi".';
+  if (/Invalid login credentials/i.test(m)) return 'Nome utente o password non corretti.';
+  if (/already registered/i.test(m)) return 'Questo nome utente è già preso. Scegline un altro oppure usa "Accedi".';
   if (/Password should be/i.test(m)) return 'La password deve avere almeno 6 caratteri.';
   if (/rate limit/i.test(m)) return 'Troppi tentativi. Riprova tra qualche minuto.';
   return m;
 }
+// Se scrivono un nome utente (senza @) lo trasformo in un indirizzo interno: nessuna email vera richiesta.
+function toEmail(v) {
+  v = v.trim().toLowerCase();
+  if (v.indexOf('@') > -1) return v;
+  return v.replace(/[^a-z0-9._-]/g, '') + '@example.com';
+}
 async function doAuth() {
-  var email = $('#email').value.trim(), pw = $('#password').value, msg = $('#authmsg');
+  var email = toEmail($('#email').value), pw = $('#password').value, msg = $('#authmsg');
   msg.style.color = 'var(--muted)'; msg.textContent = 'Un attimo…';
   try {
     if (S.authTab === 'signup') {
@@ -190,7 +196,7 @@ function authView() {
   var su = S.authTab === 'signup';
   return '<div class="wrap narrow"><div class="top">' + brand() + '</div><div class="stack"><h1>' + (su ? 'Nuovo account' : 'Accedi') + '</h1>' +
     '<div class="seg" role="tablist"><button role="tab" data-act="authtab" data-t="login" aria-selected="' + (!su) + '">Accedi</button><button role="tab" data-act="authtab" data-t="signup" aria-selected="' + su + '">Nuovo account</button></div>' +
-    '<form id="authform" class="stack-s"><label class="f" for="email">Email<input id="email" type="email" autocomplete="email" inputmode="email" required></label>' +
+    '<form id="authform" class="stack-s"><label class="f" for="email">Nome utente<input id="email" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" minlength="3" required></label>' +
     '<label class="f" for="password">Password<input id="password" type="password" autocomplete="' + (su ? 'new-password' : 'current-password') + '" minlength="6" required></label>' +
     '<button class="btn primary" type="submit">' + (su ? 'Crea account' : 'Entra') + '</button><p class="msg" id="authmsg" role="status"></p></form>' +
     (su ? '<p class="muted small">Dopo aver creato l\'account ti chiederò il codice personale che ti ha dato l\'allenatore.</p>' : '') + '</div></div>';
