@@ -1,6 +1,6 @@
 // Service worker minimo: serve a far installare il sito come app e a riaprirlo
 // anche con rete debole. Prima prova la rete, cosi' gli aggiornamenti arrivano subito.
-var CACHE = 'libretto-v1';
+var CACHE = 'ds-v2';
 var SHELL = ['./', 'index.html', 'app.js', 'config.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', function (e) {

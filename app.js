@@ -175,7 +175,15 @@ function learnName(name) {
 }
 
 /* ---------- viste ---------- */
-function brand() { return '<div class="brand"><span class="plate" aria-hidden="true"></span><span>Libretto</span></div>'; }
+function brand() {
+  return '<div class="brand"><svg class="logo" viewBox="0 0 124 44" role="img" aria-label="DS">' +
+    '<path class="lg-bar" d="M4 22H33M91 22H120"/>' +
+    '<rect class="lg-col" x="4" y="14" width="4" height="16" rx="1.5"/><rect class="lg-col" x="116" y="14" width="4" height="16" rx="1.5"/>' +
+    '<rect class="lg-a" x="12" y="4" width="8" height="36" rx="2.5"/><rect class="lg-a" x="104" y="4" width="8" height="36" rx="2.5"/>' +
+    '<rect class="lg-b" x="22" y="10" width="6" height="24" rx="2"/><rect class="lg-b" x="96" y="10" width="6" height="24" rx="2"/>' +
+    '<path class="lg-t" d="M37 9H46A13 13 0 0 1 46 35H37Z"/>' +
+    '<path class="lg-t" d="M87 9H75.5A6.5 6.5 0 0 0 75.5 22H80.5A6.5 6.5 0 0 1 80.5 35H69"/></svg></div>';
+}
 function clientName() { var c = S.clients.find(function (x) { return x.id === S.cid; }); return (S.clientDoc && S.clientDoc.name) || (c && c.name) || 'Cliente'; }
 function planDay() { return (S.plan || []).find(function (d) { return d.id === S.dayId; }) || null; }
 
